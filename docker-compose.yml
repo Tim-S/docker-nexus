@@ -3,6 +3,7 @@ version: "2"
 services:
   nexus:
     image: schneidertim/nexus
+    container_name: nexus
     volumes:
       - "./nexus-data:/sonatype-work"
     ports:
