@@ -1,0 +1,10 @@
+version: "2"
+
+services:
+  nexus:
+    image: schneidertim/nexus
+    volumes:
+      - "./nexus-data:/sonatype-work"
+    ports:
+      - "8081:8081"
+
