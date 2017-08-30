@@ -45,4 +45,15 @@ RUN curl --fail --silent --location --retry 3 \
     -type f -exec chmod 644 {} \; \
   && rm /tmp/nexus-unpack-plugin-${NEXUS_VERSION}-bundle.zip
 
+RUN curl --fail --silent --location --retry 3 \
+    -o /tmp/nexus-apt-plugin-1.1.2-bundle.zip \
+    https://github.com/inventage/nexus-apt-plugin/releases/download/nexus-apt-plugin-1.1.2/nexus-apt-plugin-1.1.2-bundle.zip \
+  && unzip -d /opt/sonatype/nexus/nexus/WEB-INF/plugin-repository \
+    /tmp/nexus-apt-plugin-1.1.2-bundle.zip \
+  && find /opt/sonatype/nexus/nexus/WEB-INF/plugin-repository/nexus-apt-plugin-1.1.2 \
+    -type d -exec chmod 755 {} \; \
+  && find /opt/sonatype/nexus/nexus/WEB-INF/plugin-repository/nexus-apt-plugin-1.1.2 \
+    -type f -exec chmod 644 {} \; \
+  && rm /tmp/nexus-apt-plugin-1.1.2-bundle.zip
+
 USER nexus
